@@ -1,0 +1,31 @@
+# Root .gitignore for the it-service-dashboard solution
+
+### Visual Studio / .NET
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+### Rider / IDE
+.idea/
+
+### Node / JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+### Env
+.env
+.env.*.local
+
+### Logs
+*.log

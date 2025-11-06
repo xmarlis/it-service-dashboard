@@ -1,0 +1,36 @@
+# Backend (.NET) specific ignores
+
+## Build folders
+/bin/
+/obj/
+
+## Rider / IDE
+.idea/
+
+## Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+
+## NuGet
+*.nupkg
+packages/
+
+## Publish outputs
+/publish/
+
+## Test results
+/TestResults/
+
+## Runtime files
+*.dll
+*.exe
+*.pdb
+
+## Logs
+*.log
+
+## Local env / secrets
+.env
+appsettings.Development.json

@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>IT Service Dashboard</h1>
+
+  <p *ngIf="loading">Lade Tickets…</p>
+  <p *ngIf="error">{{ error }}</p>
+
+  <table *ngIf="!loading && !error && tickets.length">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titel</th>
+        <th>Client ID</th>
+        <th>Priorität</th>
+        <th>Status</th>
+        <th>Erstellt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tickets">
+        <td>{{ t.id }}</td>
+        <td>{{ t.title }}</td>
+        <td>{{ t.clientId }}</td>
+        <td>{{ t.priority }}</td>
+        <td>{{ t.status }}</td>
+        <td>{{ t.createdAt | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && !error && !tickets.length">
+    Noch keine Tickets vorhanden.
+  </p>
+</div>
