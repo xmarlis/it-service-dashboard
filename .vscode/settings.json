@@ -1,0 +1,6 @@
+{
+  // Prevent VS Code from attempting to download JSON schemas from schemastore
+  // (avoids "Service Unavailable" diagnostics when schemastore.org is temporarily down
+  // or when offline).
+  "json.schemaDownload.enable": false
+}

@@ -25,9 +25,37 @@ export class AppComponent implements OnInit {
       },
       error: (err) => {
         console.error(err);
-        this.error = 'Fehler beim Laden der Tickets';
+        this.error = 'Error loading tickets';
         this.loading = false;
       }
     });
+  }
+
+  // Added method to satisfy the template (click)="openNewTicket()"
+  openNewTicket(): void {
+    // Minimal placeholder implementation:
+    console.log('openNewTicket clicked');
+
+    // Quick prompt to create a ticket for immediate UI feedback.
+    const title = window.prompt('New ticket title:');
+    if (!title) {
+      return;
+    }
+
+    const newId = this.tickets && this.tickets.length
+      ? Math.max(...this.tickets.map(t => (t as any).id || 0)) + 1
+      : 1;
+
+    const newTicket: Ticket = {
+      // ...fill required fields; cast to Ticket to avoid strict type mismatches
+      id: newId,
+      title,
+      clientId: 'Unknown',
+      priority: 'Normal',
+      status: 'Open',
+      createdAt: new Date()
+    } as unknown as Ticket;
+
+    this.tickets = [newTicket, ...this.tickets];
   }
 }

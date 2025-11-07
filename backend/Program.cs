@@ -8,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Controller aktivieren (configure JSON to ignore reference cycles)
+// Controller aktivieren und JSON so konfigurieren,
+// dass Zyklen in Navigation Properties ignoriert werden (Client -> Tickets -> Client ...)
 builder.Services.AddControllers()
     .AddJsonOptions(opts =>
     {
@@ -38,7 +39,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// HTTPS-Redirect für Dev entfernen, um keine Probleme zu haben
+// Wenn du möchtest, dass http://localhost:5023/ automatisch zu Swagger weiterleitet:
+app.MapGet("/", () => Results.Redirect("/swagger"));
+
+// HTTPS-Redirect im Dev deaktiviert, um keinen Stress mit Ports/Zertifikaten zu haben
 // app.UseHttpsRedirection();
 
 app.UseCors("AllowFrontend");

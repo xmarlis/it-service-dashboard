@@ -1,18 +1,18 @@
 <div class="container">
-  <h1>IT Service Dashboard</h1>
+  <header>
+    <h1>IT Service Dashboard</h1>
+    <button class="btn" (click)="openNewTicket()">+ New Ticket</button>
+  </header>
 
-  <p *ngIf="loading">Lade Tickets…</p>
-  <p *ngIf="error">{{ error }}</p>
-
-  <table *ngIf="!loading && !error && tickets.length">
+  <table>
     <thead>
       <tr>
         <th>ID</th>
-        <th>Titel</th>
-        <th>Client ID</th>
-        <th>Priorität</th>
+        <th>Title</th>
+        <th>Client</th>
+        <th>Priority</th>
         <th>Status</th>
-        <th>Erstellt</th>
+        <th>Created</th>
       </tr>
     </thead>
     <tbody>
@@ -21,13 +21,9 @@
         <td>{{ t.title }}</td>
         <td>{{ t.clientId }}</td>
         <td>{{ t.priority }}</td>
-        <td>{{ t.status }}</td>
+        <td [ngClass]="t.status === 'Open' ? 'status-open' : 'status-closed'">{{ t.status }}</td>
         <td>{{ t.createdAt | date:'short' }}</td>
       </tr>
     </tbody>
   </table>
-
-  <p *ngIf="!loading && !error && !tickets.length">
-    Noch keine Tickets vorhanden.
-  </p>
 </div>
